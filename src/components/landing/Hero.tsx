@@ -20,16 +20,16 @@ export function Hero() {
       />
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <Eyebrow>MCP Server</Eyebrow>
+          <Eyebrow>MCP Server for Sales</Eyebrow>
           <h1 className="mt-6 text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground md:text-7xl">
             Your AI agent just learned
             <br />
             <span className="text-primary">how to prospect.</span>
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Connect Scalelist to Claude, ChatGPT, or any MCP client and your assistant can find,
-            verify, and enrich B2B contacts — waterfalled across multiple providers, bad data
-            filtered out — without leaving the conversation.
+            Scalelist is the MCP server for sales — connect it to Claude, ChatGPT, or any MCP
+            client and turn your AI assistant into an AI sales assistant that finds, verifies, and
+            enriches B2B contacts without leaving the chat.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center">
