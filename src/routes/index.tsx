@@ -59,7 +59,10 @@ export const Route = createFileRoute("/")({
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.link ? `${f.a} Guide: ${f.link.href}` : f.a,
+            },
           })),
         }),
       },
