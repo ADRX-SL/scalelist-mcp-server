@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Eyebrow } from "./Eyebrow";
 import { CopyField } from "./CopyField";
 
-const SCALELIST_MCP_URL = "[SCALELIST_MCP_URL]";
+const SCALELIST_MCP_URL = "https://mcp.scalelist.com/mcp";
 
 export function Hero() {
   return (
