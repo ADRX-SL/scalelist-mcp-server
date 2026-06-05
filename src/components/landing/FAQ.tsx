@@ -6,56 +6,54 @@ import {
 } from "@/components/ui/accordion";
 import { Eyebrow } from "./Eyebrow";
 
-const SCALELIST_MCP_URL = "https://mcp.scalelist.com/mcp";
-
 export const FAQS = [
   {
     q: "Which AI clients does the Scalelist MCP server work with?",
-    a: "Any MCP-compatible client — Claude Desktop, ChatGPT (via MCP), Cursor, and other assistants that support the Model Context Protocol. Paste the connector URL once and you're live.",
+    a: "Scalelist works with any MCP-compatible client: Claude (Desktop and web), ChatGPT via its MCP connector, Cursor, and any other AI assistant or agent that supports the Model Context Protocol. Add the Scalelist MCP server once by pasting the connector URL (https://mcp.scalelist.com/mcp) and it's live everywhere you work.",
   },
   {
     q: "What can my AI agent actually do with Scalelist?",
-    a: "Find verified work emails and mobile numbers, enrich CSVs and LinkedIn URLs, build lead lists from plain-English descriptions, map orgs, draft personalized outreach, prep meeting briefs, and push contacts to your CRM — all in chat.",
+    a: "Once connected, your AI assistant runs your whole prospecting stack from chat: find verified work emails and direct mobile numbers, enrich a CSV or a list of LinkedIn URLs, build lead lists from a plain-English description, map a company's org chart, write personalized outreach, prep meeting briefs, and push enriched contacts to your CRM. It turns Claude or ChatGPT into an AI sales assistant on top of verified B2B data.",
   },
   {
     q: "How accurate is the data?",
-    a: "We waterfall across multiple providers and verify every result before it reaches your agent. Bounce and wrong-number rates stay low because junk is filtered out before output, and the underlying data is refreshed weekly.",
+    a: "High. Scalelist runs a waterfall across multiple data providers and verifies every result before it reaches your agent, so bounce rates and wrong numbers stay low (under 5% email bounce). Bad data is filtered out before output, and the database is refreshed weekly so you act on current contacts, not stale ones.",
   },
   {
-    q: "How do credits work — do I pay for misses?",
-    a: "No. Credits are only spent when verified data is found. If we can't find a valid email or mobile, you're not charged for that contact.",
+    q: "How do credits work, and do I pay for misses?",
+    a: "You never pay for misses. Credits are only spent when Scalelist returns verified data. If we can't find a valid email or mobile for a contact, that contact is free. Verification is included in the credit, so a valid result is already checked for deliverability.",
   },
   {
     q: "Is my data and my prospects' data handled compliantly?",
-    a: "Yes. Scalelist is GDPR and CCPA aligned. Your queries and lists are private to your workspace, and we honor data subject rights and Do Not Sell requests.",
+    a: "Yes. Scalelist is GDPR and CCPA aligned. Your queries and lists stay private to your workspace, we honor data subject and Do Not Sell requests, and we never sell your prospecting activity. Compliant data is a big part of why teams trust Scalelist as their MCP server for sales.",
   },
   {
     q: "Can it push to my CRM?",
-    a: "Yes. The agent can push enriched contacts directly to your CRM, check duplicates, map fields, and tag records — from the same chat.",
+    a: "Yes. From the same chat, your agent pushes enriched contacts straight to your CRM (HubSpot, Salesforce, Pipedrive and others), checks for duplicates first, maps fields, and tags records. No exports, no copy-paste.",
   },
   {
     q: "How do I get set up?",
-    a: "Create a free account (50 credits, no card), copy your Scalelist MCP URL, paste it into your AI client's connector settings, and start asking. Most teams are live in under five minutes.",
+    a: "Create a free account (50 credits, no credit card), copy your Scalelist MCP URL (https://mcp.scalelist.com/mcp), and paste it into your AI client's connector settings. Authorize, then start asking. Most teams are live in under five minutes.",
   },
   {
     q: "Is Scalelist a good MCP server for sales and marketing?",
-    a: "Yes — Scalelist is purpose-built as an MCP server for sales and marketing teams. The waterfall across multiple verified data providers keeps fill rates high, every result is checked before it reaches your AI assistant, and credits are only spent when verified data is found.",
+    a: "Yes. Scalelist is purpose-built as the MCP server for sales and marketing teams. The waterfall across multiple verified providers keeps fill rates high where single-database tools miss, every result is checked before it reaches your AI assistant, and you only spend credits on verified hits. That combination makes it a strong fit for outbound, ABM, and RevOps.",
   },
   {
     q: "Can I use Scalelist as an AI sales assistant?",
-    a: "That's exactly the point. Connect Scalelist to your AI client and it becomes an AI sales assistant that can prospect, enrich, write outreach, prep meetings, and push to CRM — all from chat, on top of verified, weekly-refreshed B2B data.",
+    a: "That's exactly the point. Connect Scalelist to Claude, ChatGPT, or any MCP client and it becomes an AI sales assistant that can prospect, enrich, write outreach, prep meetings, and push to your CRM, all from chat and all on top of verified, weekly-refreshed B2B data.",
   },
   {
     q: "How do I use Scalelist for sales in ChatGPT?",
-    a: `In ChatGPT's MCP connector settings, paste your Scalelist MCP URL (${SCALELIST_MCP_URL}) and authorize. ChatGPT can then find verified emails and mobiles, enrich contacts, and draft outreach inside the chat. You only pay for verified results, and the data is GDPR & CCPA aligned.`,
+    a: "In ChatGPT's connector settings, add a new MCP connector and paste your Scalelist MCP URL (https://mcp.scalelist.com/mcp), then authorize. ChatGPT can now find verified emails and mobiles, enrich contacts, and draft outreach inside the chat. You only pay for verified results, and the data is GDPR and CCPA aligned.",
   },
   {
     q: "How do I use Scalelist for sales in Claude?",
-    a: `Open Claude Desktop, add a new MCP server, and paste ${SCALELIST_MCP_URL}. Claude immediately becomes a sales-ready assistant — ask it to build a lead list, enrich a CSV, or prep your next meeting, and it queries Scalelist's waterfall behind the scenes.`,
+    a: "Open Claude (Desktop or web), go to connectors, add a custom MCP server, and paste https://mcp.scalelist.com/mcp. Claude becomes a sales-ready assistant: ask it to build a lead list, enrich a CSV, or prep your next meeting, and it queries Scalelist's verification waterfall behind the scenes.",
   },
   {
     q: "Can Scalelist power an AI SDR agent?",
-    a: "Yes. Scalelist is built for MCP for sales AI agents, so any AI SDR agent or autonomous workflow that speaks MCP can plug in. The agent sources prospects, only spends credits on verified hits, and pushes clean records to your CRM — all without the bad-data tax that breaks most SDR automations.",
+    a: "Yes. Scalelist is built for MCP for sales AI agents, so any AI SDR agent or autonomous workflow that speaks MCP can plug in. The agent sources prospects, spends credits only on verified hits, and pushes clean records to your CRM, without the bad-data tax that breaks most SDR automations.",
   },
 ];
 
