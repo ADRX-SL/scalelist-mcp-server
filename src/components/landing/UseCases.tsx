@@ -174,7 +174,8 @@ export function UseCases() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background p-1.5 shadow-sm">
+          <div className="inline-flex items-center gap-3">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background p-1.5 shadow-sm">
             <button
               type="button"
               onClick={() => setTab("prompts")}
@@ -197,6 +198,17 @@ export function UseCases() {
             >
               Skills
             </button>
+            </div>
+            {tab === "skills" && (
+              <a
+                href="/skills/all-skills.zip"
+                download
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              >
+                <Download className="h-4 w-4" />
+                Download all skills
+              </a>
+            )}
           </div>
         </div>
 
