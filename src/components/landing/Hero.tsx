@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Eyebrow } from "./Eyebrow";
 import { CopyField } from "./CopyField";
 
-const SCALELIST_MCP_URL = "https://mcp.scalelist.com/sse";
+const SCALELIST_MCP_URL = "[SCALELIST_MCP_URL]";
 const DEMO_VIDEO_URL = "#";
 
 export function Hero() {
@@ -103,57 +103,19 @@ export function Hero() {
             }}
           />
           <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm">
-            <HeroDashboard />
+            <div className="relative aspect-video w-full">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/oo_tRgfm7j8"
+                title="Scalelist MCP demo"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function HeroDashboard() {
-  const rows = [
-    { name: "Sarah Chen", title: "VP Marketing", company: "Northwind SaaS", verified: true },
-    { name: "James Okafor", title: "Head of Growth", company: "Lumen Labs", verified: true },
-    { name: "Priya Natarajan", title: "Director, Demand Gen", company: "Acme Cloud", verified: true },
-    { name: "Mateo Alvarez", title: "Marketing Lead", company: "Briskpoint", verified: true },
-    { name: "Linnea Holm", title: "VP Marketing", company: "Forsyth", verified: true },
-  ];
-  return (
-    <div className="bg-background p-4 md:p-6">
-      <div className="mb-4 flex items-center gap-2">
-        <span className="h-3 w-3 rounded-full bg-muted" />
-        <span className="h-3 w-3 rounded-full bg-muted" />
-        <span className="h-3 w-3 rounded-full bg-muted" />
-        <div className="ml-4 hidden h-7 flex-1 rounded-md border border-border bg-muted/50 sm:block" />
-      </div>
-      <div className="overflow-hidden rounded-xl border border-border">
-        <div className="grid grid-cols-12 gap-2 border-b border-border bg-muted/40 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          <div className="col-span-4">Name</div>
-          <div className="col-span-3 hidden md:block">Title</div>
-          <div className="col-span-3 hidden md:block">Company</div>
-          <div className="col-span-2 text-right">Status</div>
-          <div className="col-span-8 md:hidden">Title · Company</div>
-        </div>
-        {rows.map((r, i) => (
-          <div
-            key={i}
-            className="grid grid-cols-12 items-center gap-2 border-b border-border px-4 py-3 text-sm last:border-0"
-          >
-            <div className="col-span-4 font-medium text-foreground">{r.name}</div>
-            <div className="col-span-3 hidden text-muted-foreground md:block">{r.title}</div>
-            <div className="col-span-3 hidden text-muted-foreground md:block">{r.company}</div>
-            <div className="col-span-8 text-xs text-muted-foreground md:hidden">
-              {r.title} · {r.company}
-            </div>
-            <div className="col-span-2 flex justify-end">
-              <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-                <ShieldCheck className="h-3 w-3" /> Verified
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }

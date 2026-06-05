@@ -1,4 +1,4 @@
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function ClosingCTA() {
@@ -14,23 +14,26 @@ export function ClosingCTA() {
           }}
         />
         <div className="relative">
-          <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_12px_40px_-10px_hsl(212_100%_50%/0.7)]">
-            <Zap className="h-7 w-7" fill="currentColor" />
-          </span>
-          <h2 className="mx-auto mt-8 max-w-3xl text-4xl font-extrabold tracking-tight text-foreground md:text-6xl">
-            If we can't find the contact, no one else can.
+          <h2 className="mx-auto max-w-3xl text-4xl font-extrabold tracking-tight text-foreground md:text-6xl">
+            Unlock B2B emails &amp; mobile numbers for free
           </h2>
-          <p className="mt-5 text-sm font-medium text-muted-foreground md:text-base">
-            50 free credits · No credit card · GDPR &amp; CCPA aligned
-          </p>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
               asChild
-              className="group h-14 w-full max-w-sm rounded-full px-10 text-base font-semibold shadow-[0_14px_36px_-10px_hsl(212_100%_50%/0.7)] sm:w-auto"
+              className="group h-14 w-full max-w-sm rounded-full px-8 text-base font-semibold shadow-[0_14px_36px_-10px_hsl(212_100%_50%/0.7)] sm:w-auto"
             >
-              <a href="https://app.scalelist.com/auth/signup?redirectUrl=%2Fapp%2Fdashboard">
+              <a href="https://app.scalelist.com/auth/login?redirectUrl=%2Fapp%2Fdashboard">
                 Get started for free
                 <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="h-14 w-full max-w-sm rounded-full border-border bg-background px-8 text-base font-semibold sm:w-auto"
+            >
+              <a href="https://form.typeform.com/to/lvQHcXGx?typeform-source=scalelist.com">
+                Talk to sales
               </a>
             </Button>
           </div>

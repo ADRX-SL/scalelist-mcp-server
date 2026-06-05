@@ -3,6 +3,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { LogoBar } from "@/components/landing/LogoBar";
 import { DataQuality } from "@/components/landing/DataQuality";
+import { HowYouCanUseIt } from "@/components/landing/HowYouCanUseIt";
 import { ClientsSection } from "@/components/landing/ClientsSection";
 import { UseCases } from "@/components/landing/UseCases";
 import { Testimonials } from "@/components/landing/Testimonials";
@@ -89,6 +90,7 @@ function Index() {
         <Hero />
         <LogoBar />
         <DataQuality />
+        <HowYouCanUseIt />
         <ClientsSection />
         <UseCases />
         <Testimonials />
