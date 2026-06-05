@@ -223,7 +223,7 @@ function SkillCard({ title, desc, slug }: { title: string; desc: string; slug: s
     <div className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex-1">
         <h3 className="text-lg font-bold text-foreground">{title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+        <p className="mt-2 min-h-[4.5rem] text-sm leading-relaxed text-muted-foreground">{desc}</p>
       </div>
 
       <div className="mt-4">
@@ -266,7 +266,7 @@ function UseCaseCard({
     <div className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex-1">
         <h3 className="text-lg font-bold text-foreground">{title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+        <p className="mt-2 min-h-[4.5rem] text-sm leading-relaxed text-muted-foreground">{desc}</p>
       </div>
 
       <div className="mt-4 flex items-center justify-between gap-3">
