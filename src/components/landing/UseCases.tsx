@@ -201,13 +201,13 @@ export function UseCases() {
         </div>
 
         {tab === "prompts" ? (
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid items-start gap-5 md:grid-cols-2 lg:grid-cols-3">
             {CASES.map((c, i) => (
               <UseCaseCard key={i} {...c} />
             ))}
           </div>
         ) : (
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid items-start gap-5 md:grid-cols-2 lg:grid-cols-3">
             {SKILLS.map((s, i) => (
               <SkillCard key={i} {...s} />
             ))}

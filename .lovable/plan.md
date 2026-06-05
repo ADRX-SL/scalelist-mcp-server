@@ -1,9 +1,9 @@
 ## Problem
 
-Switching to the Skills tab inside `UseCases` renders all 29 cards in the DOM, but they're invisible. The cards carry the `sl-reveal` class, which starts at `opacity: 0` and only becomes visible once an `IntersectionObserver` (set up once on home-page mount in `useReveal`) adds `is-visible` to it. Because the Skills cards mount *after* the observer has already scanned the page, they never get observed and stay hidden — that's the "empty section" in the screenshot. The Prompts tab works because it's the default and gets observed on initial load.
+The grid uses CSS Grid defaults, so all cards in the same row share the tallest row height. Expanding "Show prompt" on one card stretches its siblings to match (screenshots 1–2). Desired behavior: only the clicked card grows; siblings keep their natural height (screenshots 3–4).
 
 ## Fix
 
-In `src/components/landing/UseCases.tsx`, remove `sl-reveal` from the card root in both `UseCaseCard` and `SkillCard`. The section header above the grid keeps its own `sl-reveal` for the entry animation, so nothing visual is lost — only the per-card fade-in is dropped, which is what's currently breaking the Skills tab.
+In `src/components/landing/UseCases.tsx`, add `items-start` to both grid containers (the Prompts grid and the Skills grid). This makes each card align to the start of its row track and size to its own content instead of stretching to the row's max height.
 
-No other files change.
+No other changes.
