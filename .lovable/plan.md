@@ -1,17 +1,14 @@
-## Goal
+I can see it clearly: in the screenshot, cards with longer titles/descriptions push their “Show prompt” button lower, so the buttons are not on the same horizontal line.
 
-In both the Prompts and Skills grids, every card in a row should have the same collapsed height so the action button ("Show prompt" / "Download Skill") sits on the same line. Expanding one card must still not stretch its siblings (keep current `items-start` behavior).
+Plan:
+1. Update only the use-case prompt cards in `src/components/landing/UseCases.tsx`.
+2. Give each collapsed prompt card a fixed/equal base height so all cards in the grid start with the same height.
+3. Change the card layout so the action row is pinned to the bottom of that equal-height card, making every “Show prompt” button align across each row.
+4. Keep the expanded prompt behavior isolated so opening one card grows only that card downward and does not stretch neighboring cards.
 
-## Change
-
-File: `src/components/landing/UseCases.tsx`
-
-Normalize the height of the description block so cards with shorter copy match cards with longer copy, while leaving the grid in `items-start` mode.
-
-1. In `UseCaseCard`, change the description `<p>` to reserve room for ~3 lines:
-   - add `min-h-[4.5rem]` (≈3 lines at `text-sm` / `leading-relaxed`)
-2. In `SkillCard`, apply the same `min-h-[4.5rem]` to its description `<p>`.
-
-No other changes. Grid keeps `items-start`, content area keeps `flex-1`, button row keeps `mt-4`, so:
-- collapsed cards align to the same height → buttons on one line
-- expanded card grows downward only, siblings stay put
+Technical detail:
+- Add a responsive `min-h` to `UseCaseCard`.
+- Keep the card as `flex flex-col`.
+- Keep the content wrapper as `flex-1`.
+- Keep the grid using `items-start`.
+- Do not change other sections or the Skills cards unless needed for this exact alignment issue.

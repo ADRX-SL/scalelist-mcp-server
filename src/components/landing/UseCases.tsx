@@ -265,8 +265,8 @@ function UseCaseCard({
   return (
     <div className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex-1">
-        <h3 className="text-lg font-bold text-foreground">{title}</h3>
-        <p className="mt-2 min-h-[4.5rem] text-sm leading-relaxed text-muted-foreground">{desc}</p>
+        <h3 className="min-h-[3.5rem] text-lg font-bold leading-tight text-foreground">{title}</h3>
+        <p className="mt-2 min-h-[5.25rem] text-sm leading-relaxed text-muted-foreground">{desc}</p>
       </div>
 
       <div className="mt-4 flex items-center justify-between gap-3">
