@@ -1,9 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-export function InlineCTA({ eyebrow }: { eyebrow?: string }) {
+export function InlineCTA({ eyebrow, className }: { eyebrow?: string; className?: string }) {
   return (
-    <section className="py-2 md:py-3">
+    <section className={cn("py-2 md:py-3", className)}>
       <div className="mx-auto max-w-7xl px-6">
         <div className="sl-reveal flex flex-col items-center justify-center gap-3 sm:flex-row">
           {eyebrow && (

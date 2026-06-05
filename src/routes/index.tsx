@@ -90,7 +90,7 @@ function Index() {
         <Hero />
         <LogoBar />
         <DataQuality />
-        <InlineCTA />
+        <InlineCTA className="bg-section-warm" />
         <HowYouCanUseIt />
         <InlineCTA />
         <ClientsSection />
