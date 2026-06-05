@@ -50,11 +50,9 @@ export function HowYouCanUseIt() {
         </div>
 
         <div className="mt-14 flex flex-col gap-10 md:gap-16">
-          {ROWS.map((row) => (
-            <div
-              key={row.videoSrc}
-              className="sl-reveal grid gap-10 rounded-3xl border border-border bg-card p-6 shadow-sm md:grid-cols-2 md:items-center md:gap-12 md:p-10"
-            >
+          {ROWS.map((row, i) => {
+            const isOdd = i % 2 === 1;
+            const textBlock = (
               <div>
                 <h3 className="text-2xl font-extrabold tracking-tight text-foreground md:text-3xl">
                   {row.title}
@@ -71,6 +69,8 @@ export function HowYouCanUseIt() {
                   ))}
                 </ul>
               </div>
+            );
+            const videoBlock = (
               <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-sm">
                 <div className="relative aspect-video w-full">
                   <iframe
@@ -83,8 +83,26 @@ export function HowYouCanUseIt() {
                   />
                 </div>
               </div>
-            </div>
-          ))}
+            );
+            return (
+              <div
+                key={row.videoSrc}
+                className="sl-reveal grid gap-10 rounded-3xl border border-border bg-card p-6 shadow-sm md:grid-cols-2 md:items-center md:gap-12 md:p-10"
+              >
+                {isOdd ? (
+                  <>
+                    {videoBlock}
+                    {textBlock}
+                  </>
+                ) : (
+                  <>
+                    {textBlock}
+                    {videoBlock}
+                  </>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
