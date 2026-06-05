@@ -6,7 +6,13 @@ import {
 } from "@/components/ui/accordion";
 import { Eyebrow } from "./Eyebrow";
 
-export const FAQS = [
+type FAQItem = {
+  q: string;
+  a: string;
+  link?: { label: string; href: string };
+};
+
+export const FAQS: FAQItem[] = [
   {
     q: "Which AI clients does the Scalelist MCP server work with?",
     a: "Scalelist works with any MCP-compatible client: Claude (Desktop and web), ChatGPT via its MCP connector, Cursor, and any other AI assistant or agent that supports the Model Context Protocol. Add the Scalelist MCP server once by pasting the connector URL (https://mcp.scalelist.com/mcp) and it's live everywhere you work.",
@@ -17,7 +23,7 @@ export const FAQS = [
   },
   {
     q: "How accurate is the data?",
-    a: "High. Scalelist runs a waterfall across multiple data providers and verifies every result before it reaches your agent, so bounce rates and wrong numbers stay low (under 5% email bounce). Bad data is filtered out before output, and the database is refreshed weekly so you act on current contacts, not stale ones.",
+    a: "Scalelist verifies every professional email and mobile number before it reaches your agent. Email accuracy is around 99%, bounce rates stay under 5%, and coverage reaches up to 95% of B2B emails and mobiles worldwide. The database is refreshed weekly, so you act on current contacts, not stale ones.",
   },
   {
     q: "How do credits work, and do I pay for misses?",
@@ -37,7 +43,7 @@ export const FAQS = [
   },
   {
     q: "Is Scalelist a good MCP server for sales and marketing?",
-    a: "Yes. Scalelist is purpose-built as the MCP server for sales and marketing teams. The waterfall across multiple verified providers keeps fill rates high where single-database tools miss, every result is checked before it reaches your AI assistant, and you only spend credits on verified hits. That combination makes it a strong fit for outbound, ABM, and RevOps.",
+    a: "Yes. Scalelist is purpose-built as the MCP server for sales and marketing teams. It verifies every professional email and mobile number before it reaches your AI assistant, coverage reaches up to 95% worldwide where single-database tools fall short, and you only spend credits on verified hits. That combination makes it a strong fit for outbound, ABM, and RevOps.",
   },
   {
     q: "Can I use Scalelist as an AI sales assistant?",
@@ -46,10 +52,18 @@ export const FAQS = [
   {
     q: "How do I use Scalelist for sales in ChatGPT?",
     a: "In ChatGPT's connector settings, add a new MCP connector and paste your Scalelist MCP URL (https://mcp.scalelist.com/mcp), then authorize. ChatGPT can now find verified emails and mobiles, enrich contacts, and draft outreach inside the chat. You only pay for verified results, and the data is GDPR and CCPA aligned.",
+    link: {
+      label: "Read the step-by-step ChatGPT guide",
+      href: "https://intercom.help/scalelist/en/articles/15338166-connect-chatgpt-to-scalelist",
+    },
   },
   {
     q: "How do I use Scalelist for sales in Claude?",
-    a: "Open Claude (Desktop or web), go to connectors, add a custom MCP server, and paste https://mcp.scalelist.com/mcp. Claude becomes a sales-ready assistant: ask it to build a lead list, enrich a CSV, or prep your next meeting, and it queries Scalelist's verification waterfall behind the scenes.",
+    a: "Open Claude (Desktop or web), go to connectors, add a custom MCP server, and paste https://mcp.scalelist.com/mcp. Claude becomes a sales-ready assistant: ask it to build a lead list, enrich a CSV, or prep your next meeting, and Scalelist verifies every email and mobile behind the scenes.",
+    link: {
+      label: "Read the step-by-step Claude guide",
+      href: "https://intercom.help/scalelist/en/articles/15337359-connect-claude-to-scalelist",
+    },
   },
   {
     q: "Can Scalelist power an AI SDR agent?",
@@ -80,6 +94,16 @@ export function FAQ() {
               </AccordionTrigger>
               <AccordionContent className="text-base leading-relaxed text-muted-foreground">
                 {f.a}
+                {f.link && (
+                  <a
+                    href={f.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 block text-primary font-semibold hover:underline"
+                  >
+                    {f.link.label}
+                  </a>
+                )}
               </AccordionContent>
             </AccordionItem>
           ))}
