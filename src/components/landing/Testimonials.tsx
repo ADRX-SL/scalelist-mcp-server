@@ -1,45 +1,56 @@
+const REVIEWS = [
+  {
+    quote:
+      "I love Scalelist — cannot recommend it enough. It does EVERYTHING you need it to do really well. Easy to use and navigate, and Arnaud and the team are always there to lend a hand. Built by people who really care about their product.",
+    name: "Chris Hackett",
+    title: "CEO & Founder @ Firm Growth",
+  },
+  {
+    quote:
+      "We use Scalelist every day. It's a really good product that helps us find our prospects' emails and phone numbers.",
+    name: "Baptiste Graffin",
+    title: "VP of Sales APAC @ Happydemics",
+  },
+  {
+    quote:
+      "Perfect for small to medium teams who want to start quickly. Verification is prioritised over volume, so it's also strong for protecting data and domains.",
+    name: "James Donaldson",
+    title: "Founder & Director @ Stakki",
+  },
+];
+
 export function Testimonials() {
   return (
     <section className="bg-[#FAF7F1] py-20 md:py-28">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-2 md:items-center md:gap-14">
-        <div className="sl-reveal order-2 md:order-1">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-3xl text-center sl-reveal">
           <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-            Scalelist is a must-have!
+            Loved by sales teams that ship.
           </h2>
-          <blockquote className="mt-6 text-lg leading-relaxed text-foreground/80 md:text-xl">
-            We've been using Scalelist for six months and are extremely satisfied. The tool is
-            powerful and intuitive, and the founders provide outstanding support. What stands out
-            is that user feedback is not just heard but actively implemented. Regular updates make
-            it even better. If you want to scale efficiently, Scalelist is a must-have!
-          </blockquote>
-          <figcaption className="mt-8 flex items-center gap-4">
-            <div>
-              <div className="text-base font-bold text-foreground">Manuel Drissner</div>
-              <div className="text-sm text-muted-foreground">
-                Head of Sales @ Consolidate Software
-              </div>
-            </div>
-            <img
-              src="https://scalelist.com/wp-content/uploads/2025/09/Manuel-Drissner-company.webp"
-              alt="Consolidate Software logo"
-              loading="lazy"
-              className="ml-2 h-10 w-auto object-contain"
-            />
-          </figcaption>
         </div>
-
-        <div className="sl-reveal order-1 md:order-2">
-          <div
-            className="mx-auto flex aspect-square w-full max-w-md items-end justify-center overflow-hidden rounded-[2rem]"
-            style={{ background: "#F5C842" }}
-          >
-            <img
-              src="https://scalelist.com/wp-content/uploads/2026/03/Manuel-Drissner.webp"
-              alt="Portrait of Manuel Drissner, Head of Sales at Consolidate Software"
-              loading="lazy"
-              className="h-full w-full object-cover object-bottom"
-            />
-          </div>
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {REVIEWS.map((r) => (
+            <figure
+              key={r.name}
+              className="sl-reveal flex h-full flex-col justify-between rounded-2xl border border-border bg-background p-7 shadow-sm"
+            >
+              <blockquote className="text-base leading-relaxed text-foreground/85">
+                "{r.quote}"
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3">
+                <span
+                  aria-hidden
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary"
+                >
+                  {r.name.charAt(0)}
+                </span>
+                <div>
+                  <div className="text-sm font-bold text-foreground">{r.name}</div>
+                  <div className="text-xs text-muted-foreground">{r.title}</div>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>
