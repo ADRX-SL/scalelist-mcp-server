@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function InlineCTA({ eyebrow }: { eyebrow?: string }) {
   return (
-    <section className="py-8 md:py-10">
+    <section className="py-2 md:py-3">
       <div className="mx-auto max-w-7xl px-6">
         <div className="sl-reveal flex flex-col items-center justify-center gap-3 sm:flex-row">
           {eyebrow && (
