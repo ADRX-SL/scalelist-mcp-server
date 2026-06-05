@@ -1,0 +1,70 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Eyebrow } from "./Eyebrow";
+
+const FAQS = [
+  {
+    q: "Which AI clients does the Scalelist MCP server work with?",
+    a: "Any MCP-compatible client — Claude Desktop, ChatGPT (via MCP), Cursor, and other assistants that support the Model Context Protocol. Paste the connector URL once and you're live.",
+  },
+  {
+    q: "What can my AI agent actually do with Scalelist?",
+    a: "Find verified work emails and mobile numbers, enrich CSVs and LinkedIn URLs, build lead lists from plain-English descriptions, map orgs, draft personalized outreach, prep meeting briefs, and push contacts to your CRM — all in chat.",
+  },
+  {
+    q: "How accurate is the data?",
+    a: "We waterfall across multiple providers and verify every result before it reaches your agent. Bounce and wrong-number rates stay low because junk is filtered out before output, and the underlying data is refreshed weekly.",
+  },
+  {
+    q: "How do credits work — do I pay for misses?",
+    a: "No. Credits are only spent when verified data is found. If we can't find a valid email or mobile, you're not charged for that contact.",
+  },
+  {
+    q: "Is my data and my prospects' data handled compliantly?",
+    a: "Yes. Scalelist is GDPR and CCPA aligned. Your queries and lists are private to your workspace, and we honor data subject rights and Do Not Sell requests.",
+  },
+  {
+    q: "Can it push to my CRM?",
+    a: "Yes. The agent can push enriched contacts directly to your CRM, check duplicates, map fields, and tag records — from the same chat.",
+  },
+  {
+    q: "How do I get set up?",
+    a: "Create a free account (50 credits, no card), copy your Scalelist MCP URL, paste it into your AI client's connector settings, and start asking. Most teams are live in under five minutes.",
+  },
+];
+
+export function FAQ() {
+  return (
+    <section className="bg-muted/30 py-20 md:py-28">
+      <div className="mx-auto max-w-3xl px-6">
+        <div className="text-center sl-reveal">
+          <Eyebrow>FAQ</Eyebrow>
+          <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
+            Questions, answered.
+          </h2>
+        </div>
+
+        <Accordion type="single" collapsible className="mt-12 space-y-3">
+          {FAQS.map((f, i) => (
+            <AccordionItem
+              key={i}
+              value={`item-${i}`}
+              className="rounded-2xl border border-border bg-card px-6 shadow-sm"
+            >
+              <AccordionTrigger className="py-5 text-left text-base font-semibold text-foreground hover:no-underline">
+                {f.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-base leading-relaxed text-muted-foreground">
+                {f.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
