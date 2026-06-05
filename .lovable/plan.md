@@ -1,13 +1,13 @@
-## Goal
-In the "Use cases" grid, the expanded "Show prompt" box currently grows to fit the full multi-line prompt, making cards wildly tall and the section ugly. Cap the prompt box at a small fixed height and let users scroll inside it.
-
 ## Change (single file: `src/components/landing/UseCases.tsx`)
 
-On the inner prompt container (the `<div class="relative ... font-mono ...">` that renders `{prompt}`):
-- Add `max-h-48` (≈12rem, matches the visual height of the shortest prompts before this change so cards stay compact and uniform).
-- Add `overflow-y-auto` so the prompt scrolls inside the box.
-- Keep `whitespace-pre-wrap` so line breaks still render.
-- Keep the copy button pinned top-right (already `absolute`), so it stays visible while scrolling.
-- Keep the Show/Hide toggle and copy-full-prompt behavior unchanged.
+1. Update the subtitle paragraph: replace "Real prompts your team can paste today..." with "Real prompts and skills your team can paste today. Use Scalelist as an AI prospecting tool — or wire it into your AI SDR agent."
 
-No other sections, copy, or styles change.
+2. Below the subtitle, add a pill-style toggle (matching the "For Sales Teams / For Outbound Agencies" style from Screenshot 2) with two buttons: **Prompts** and **Skills**. Default = Prompts. Selected = solid blue (primary) with white text; unselected = white with border and dark text.
+
+3. Wire the toggle to `useState`. The existing 9-card grid renders only when **Prompts** is selected.
+
+4. When **Skills** is selected, render a same-size section (same container width, same grid layout, same card count placeholder — 9 empty cards or a "Coming soon" placeholder grid identical in dimensions) so the section height stays consistent between tabs.
+
+5. Once you provide the actual SKILLS content, I'll populate the Skills grid in a follow-up.
+
+No other sections, copy, styles, or files change.

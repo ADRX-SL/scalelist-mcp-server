@@ -126,6 +126,7 @@ Rules: don't enrich anyone < 60; if fewer than 10 hit the bar, return only those
 ];
 
 export function UseCases() {
+  const [tab, setTab] = useState<"prompts" | "skills">("prompts");
   return (
     <section id="solutions" className="bg-muted/30 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6">
@@ -135,16 +136,56 @@ export function UseCases() {
             One conversation. Your entire prospecting stack.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Real prompts your team can paste today. Use Scalelist as an AI prospecting tool — or
-            wire it into your AI SDR agent.
+            Real prompts and skills your team can paste today. Use Scalelist as an AI prospecting
+            tool — or wire it into your AI SDR agent.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {CASES.map((c, i) => (
-            <UseCaseCard key={i} {...c} />
-          ))}
+        <div className="mt-10 flex justify-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background p-1.5 shadow-sm">
+            <button
+              type="button"
+              onClick={() => setTab("prompts")}
+              className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-colors ${
+                tab === "prompts"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground hover:bg-muted"
+              }`}
+            >
+              Prompts
+            </button>
+            <button
+              type="button"
+              onClick={() => setTab("skills")}
+              className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-colors ${
+                tab === "skills"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground hover:bg-muted"
+              }`}
+            >
+              Skills
+            </button>
+          </div>
         </div>
+
+        {tab === "prompts" ? (
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {CASES.map((c, i) => (
+              <UseCaseCard key={i} {...c} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 9 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex min-h-[220px] flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card p-6 text-center text-sm text-muted-foreground"
+              >
+                Skill coming soon
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
