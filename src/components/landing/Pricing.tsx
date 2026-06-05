@@ -37,9 +37,6 @@ export function Pricing() {
           ))}
         </div>
 
-        <p className="mt-8 text-center text-sm text-muted-foreground">
-          Specific plan prices: [CONFIRM_PRICING]
-        </p>
       </div>
     </section>
   );

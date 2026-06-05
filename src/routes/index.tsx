@@ -8,7 +8,6 @@ import { ClientsSection } from "@/components/landing/ClientsSection";
 import { UseCases } from "@/components/landing/UseCases";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { HowItWorks } from "@/components/landing/HowItWorks";
-import { StatsBand } from "@/components/landing/StatsBand";
 import { Pricing } from "@/components/landing/Pricing";
 import { FAQ, FAQS } from "@/components/landing/FAQ";
 import { ClosingCTA } from "@/components/landing/ClosingCTA";
@@ -95,7 +94,7 @@ function Index() {
         <UseCases />
         <Testimonials />
         <HowItWorks />
-        <StatsBand />
+        <ClosingCTA />
         <Pricing />
         <FAQ />
         <ClosingCTA />
