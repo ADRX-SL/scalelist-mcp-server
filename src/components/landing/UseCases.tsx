@@ -6,56 +6,122 @@ const CASES = [
   {
     title: "Build a lead list from a description",
     desc: "Describe who you want; the AI finds them and returns a clean table with verified emails and phones.",
-    prompt:
-      "Find 15 Heads of Marketing at SaaS companies in San Francisco, under 200 employees. Verified emails + mobiles only. Return a clean table.",
+    prompt: `Goal: a verified, deduped lead list, one decision-maker per company.
+
+Target: exactly 25 people whose current title is one of ["VP Marketing","Head of Marketing","CMO"] (fall back to "Marketing Director" only if none exist at that company), at B2B SaaS companies, HQ country = United States, headcount 50–200, founded 2015 or later.
+
+Process:
+1. Build a 30-company shortlist (over-fetch to cover misses) and print it as a numbered list with company + employee count. STOP and wait for my "go".
+2. After "go", pick the single best-fit person per company (one per company, no duplicates).
+3. Enrich with Scalelist: verified work email + direct mobile. Cap spend at 60 credits; if you'd exceed it, stop and ask.
+
+Output table, columns in this exact order: Rank | First name | Last name | Title | Company | Employees | HQ city | Website | LinkedIn URL | Email (lowercase) | Email status (valid/risky) | Mobile (E.164).
+Rules: include ONLY rows with a valid email; drop risky/not-found; sort by Employees descending; never fabricate a value (leave blank + note). Finish with: rows returned, emails found, mobiles found, credits used.`,
   },
   {
     title: "Enrich a CSV without leaving the chat",
     desc: "Drop a CSV of LinkedIn URLs, names, or domains; the AI enriches every row.",
-    prompt:
-      "Here are 50 LinkedIn URLs from last week's event. Enrich all rows with verified work email and direct mobile. Flag anyone we can't reach.",
+    prompt: `I'm attaching a CSV. Identifier per row is either (Full name + Company domain) OR a LinkedIn URL.
+
+Process:
+1. Tell me the row count detected and which identifier you'll use. If >200 rows, process in batches of 100 and confirm after each batch.
+2. Enrich every row with Scalelist: verified work email + direct mobile. Verify each email and label it exactly valid / risky / not_found.
+
+Output: return my ORIGINAL columns and row order unchanged, then append, in this order: Email (lowercase) | Email_status | Mobile (E.164) | Mobile_status (found/not_found) | Reachable (Yes if Email_status=valid OR Mobile_status=found, else No) | Note (short reason when not reachable).
+Then print a summary: rows processed, valid emails, risky, not_found, mobiles found, reachable %, credits used. Misses cost 0 credits — never delete unreachable rows, only flag them. Finally export as "enriched_<original-filename>.csv".`,
   },
   {
     title: "Write outreach that doesn't look like outreach",
     desc: "The AI pulls career history and company context, then writes tailored emails, DMs, or call scripts.",
-    prompt:
-      "Write a personalized cold email for each of these 10 contacts. I sell [product]. Short, direct, and reference something specific from their career or company.",
+    prompt: `Write a personalized cold email for each of these 10 enriched contacts.
+
+My context: I sell [product] to [audience]. Primary outcome: [metric/result]. Proof point: [1 customer + result]. CTA: interest-based, not a meeting ask.
+
+For each contact, mine their Scalelist profile for ONE concrete, verifiable hook, in this priority: (1) job change in last 6 months, (2) company signal [hiring/funding/launch], (3) specific role scope. If none exist, mark "needs manual review" and skip — never fabricate a hook.
+
+Hard rules: subject ≤ 42 characters, no emoji; body 50–90 words; ≤ 9th-grade reading level; plain text; exactly one CTA phrased as a question; banned phrases: "hope this finds you well", "quick question", "I noticed you're the [title]", "synergy", "circle back", "game-changer".
+Output table: # | Name | Company | Hook type used | Subject | Body | Word count.`,
   },
   {
     title: "Map an org before your first call",
     desc: "Company or domain in; org chart, hierarchy, and who to contact first out.",
-    prompt:
-      "Map the GTM team at [company]. Build an org chart from titles and seniority. Tell me who to contact first for a [offer] pitch and why.",
+    prompt: `Map the GTM org at [company.com] so I know exactly who to open with. My offer: [what I sell + outcome + who owns it].
+
+Process:
+1. Use Scalelist to find current employees in Sales, Marketing, and RevOps/Operations at this domain.
+2. Group by function; within each, rank by seniority: C-level > VP > Senior Director > Director > Senior Manager > Manager > IC.
+3. Recommend a Primary and Backup first-contact for my offer, each with a one-line reason tied to budget or problem ownership (not just seniority).
+4. Enrich ONLY the Primary and Backup with verified email + mobile (max 2 credits).
+
+Output: (A) org chart as an indented list grouped by function, each person = Name — Title — tier; (B) "Contact first" block with Primary {name, title, why, email, mobile} and Backup {same}.
+Edge case: if the company has <10 employees or no GTM titles, say so and name the founder/CEO as the entry point. End with credits used.`,
   },
   {
     title: "Build a sequence from scratch",
     desc: "The AI designs timing, channel mix, branches, and a breakup message.",
-    prompt:
-      "Build a 5-touch sequence for these 20 leads. Email at T1/T3/T5, LinkedIn DM at T2/T4. Personalize every touch using the enriched profile. Breakup message at T5.",
+    prompt: `Build a 5-touch outbound sequence for these 20 enriched leads. I sell [product]; outcome [result]; proof [stat]; CTA style = soft/interest-based.
+
+Exact cadence (business days): Day 1 Email, Day 2 LinkedIn DM, Day 4 Email, Day 6 LinkedIn DM, Day 9 Email (breakup).
+Angle per touch (no repeats): T1 problem hook → T2 one-line credibility → T3 new proof/use case → T4 light social-proof nudge → T5 breakup with an easy out.
+Personalize every touch from each lead's Scalelist profile (role, company, signal); the T1 opening line must be unique per lead. Emails 50–90 words, DMs ≤ 45 words, one CTA each.
+
+Output: one master table — Lead | Company | Touch | Channel | Send day | Subject (emails only) | Message | Word count.
+Then: (a) the 1 variable I should A/B test first and why; (b) any lead with too little data flagged "generic — needs review" rather than guessed.`,
   },
   {
     title: "Prep for a meeting in 30 seconds",
     desc: "LinkedIn URL or name in; a full brief out.",
-    prompt:
-      "I have a call with [name] at [company] in 10 minutes. Brief me: career path, company context, recent signals, a suggested opener, and 3 questions worth asking.",
+    prompt: `I have a call with [name] at [company] in 10 minutes. Pull their profile + company via Scalelist and brief me in EXACTLY this structure, total ≤ 220 words, no fluff:
+
+1) Who they are — title, seniority tier, time in current role, previous role/company (1 line).
+2) Company — what they sell, segment, employee band, and 1 recent signal with rough date.
+3) Their likely top 2 priorities + 1 pain for this exact seat.
+4) Fit — one sentence mapping [my product] to point 3.
+5) Opener — one tailored line referencing point 1 or 2 (not generic).
+6) Discovery — 3 questions ordered easy → hard, each ≤ 20 words.
+7) Landmine — 1 objection/sensitivity common to this persona + a one-line counter.
+
+If any field is unknown, write "unknown — not in data" rather than guessing. Don't enrich email/mobile.`,
   },
   {
     title: "Push to CRM in one prompt",
     desc: "The AI detects your CRM, maps fields, checks duplicates, and pushes.",
-    prompt:
-      "Push these 20 contacts to my CRM. Tag 'Scalelist Q2 2026'. Check duplicates first. Add the company context as a note on each contact.",
+    prompt: `Push these 20 enriched contacts to my [HubSpot/Salesforce/Pipedrive].
+
+Process (do NOT write anything until step 3 is approved):
+1. Dedupe: match existing records on email (exact, case-insensitive); if no email, match on (Last name + Company domain).
+2. Show me a preview: New (n), Duplicate (n, with matched record name+ID), Conflict (n, where my data differs). Wait for my approval.
+3. On approval: create New; for Duplicates only fill BLANK fields (never overwrite); skip Conflicts and list them.
+
+Field mapping: First name, Last name, Title, Company, Email (lowercase), Mobile (E.164), LinkedIn URL, Lead source = "Scalelist MCP". Apply tag/list "Scalelist – Q2 2026". Add a note per record: "[industry], [employees], fit: [one line]".
+Output: summary table — Created | Updated (blanks filled) | Skipped duplicate | Skipped conflict | Failed (with reason).`,
   },
   {
     title: "Source candidates like a headhunter",
     desc: "Describe a role; the AI searches, enriches, and tiers candidates.",
-    prompt:
-      "Source 15 Senior Backend Engineers, Python, remote France. Enrich with mobile + email. Tier them 1/2/3 with a one-line reason each. Exclude our company.",
+    prompt: `Source 15 candidates for: [Senior Backend Engineer]. Must-have: [Python] + [5+ yrs backend]. Nice-to-have: [AWS, Kubernetes]. Location: [remote, France or CET ±2h]. Hard exclude: anyone currently at [our company] or [competitors].
+
+Process:
+1. Build a 20-name shortlist (over-fetch); print Name | Current title | Company | Location; wait for my approval.
+2. On approval, enrich each with Scalelist (verified email + mobile; cap 30 credits).
+3. Score fit 1–3 (1 = best) against must-haves only; nice-to-haves break ties.
+
+Output table, sorted Tier 1→3 then years desc: Tier | Name | Current title | Company | Location | Years relevant | Must-haves met (y/n) | Why (≤15 words) | Email | Email status | Mobile (E.164).
+Flag candidates with an "open to work"/recent-departure signal as "⚡ priority". End with count per tier + credits used. Never include an excluded company.`,
   },
   {
     title: "Find contacts that look like your best customers",
     desc: "Share a converted contact; the AI reverse-engineers the ICP and finds lookalikes.",
-    prompt:
-      "This contact converted last month: [LinkedIn URL]. Reverse-engineer the ICP and find 10 lookalikes. Rank by match score with a one-line reason each.",
+    prompt: `Seed (a customer who converted last month): [LinkedIn URL or Name + Company].
+
+Process:
+1. Profile the seed + company via Scalelist and output a 1-line ICP: industry | employee band | role+seniority | region | 1–2 buying signals.
+2. Wait for my "go" / edits on that ICP.
+3. Find 10 lookalike contacts at OTHER companies (exclude the seed's company and [my company]); one per company.
+4. Score each 0–100 on ICP fit, weighting: role/seniority 40, industry 25, company size 20, region 15. Enrich ONLY contacts scoring ≥ 60 (top 5 max) with verified email + mobile.
+
+Output: (A) the final ICP line; (B) ranked table sorted by score desc: Rank | Name | Title | Company | Employees | Region | Match score | Score reason (≤15 words) | Email | Mobile (E.164).
+Rules: don't enrich anyone < 60; if fewer than 10 hit the bar, return only those and say why. End with credits used.`,
   },
 ];
 
@@ -129,7 +195,7 @@ function UseCaseCard({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="relative rounded-xl border border-border bg-muted/50 p-4 pr-12 font-mono text-sm leading-relaxed text-foreground">
+          <div className="relative whitespace-pre-wrap rounded-xl border border-border bg-muted/50 p-4 pr-12 font-mono text-sm leading-relaxed text-foreground">
             {prompt}
             <button
               type="button"
