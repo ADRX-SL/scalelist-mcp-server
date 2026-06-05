@@ -1,9 +1,9 @@
-## Fix "Show prompt" button alignment across cards
+## Problem
 
-The 9 cards in the Prompts grid currently have "Show prompt" buttons at varying vertical positions because titles and descriptions have different line counts. This makes the grid look messy (cf. screenshot).
+Switching to the Skills tab inside `UseCases` renders all 29 cards in the DOM, but they're invisible. The cards carry the `sl-reveal` class, which starts at `opacity: 0` and only becomes visible once an `IntersectionObserver` (set up once on home-page mount in `useReveal`) adds `is-visible` to it. Because the Skills cards mount *after* the observer has already scanned the page, they never get observed and stay hidden — that's the "empty section" in the screenshot. The Prompts tab works because it's the default and gets observed on initial load.
 
-### What to change (UseCases.tsx only)
+## Fix
 
-Inside `UseCaseCard`, wrap the `<h3>` title and `<p>` description in a `<div className="flex-1">` so it grows to fill available vertical space. Then change the "Show prompt" button's top margin from `mt-4` to `mt-auto` so it always sits at the bottom of each card, aligned across the grid regardless of title/description length.
+In `src/components/landing/UseCases.tsx`, remove `sl-reveal` from the card root in both `UseCaseCard` and `SkillCard`. The section header above the grid keeps its own `sl-reveal` for the entry animation, so nothing visual is lost — only the per-card fade-in is dropped, which is what's currently breaking the Skills tab.
 
-No other copy, layout, or files are touched.
+No other files change.
