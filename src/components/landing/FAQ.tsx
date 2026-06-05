@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { Eyebrow } from "./Eyebrow";
 
-const SCALELIST_MCP_URL = "https://mcp.scalelist.com/sse";
+const SCALELIST_MCP_URL = "[SCALELIST_MCP_URL]";
 
 export const FAQS = [
   {
