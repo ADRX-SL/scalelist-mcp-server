@@ -34,6 +34,26 @@ export function ClientsSection() {
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             One MCP connector. Your whole prospecting stack, inside the assistant you already use.
           </p>
+          <div className="mt-8 flex items-center justify-center gap-8 opacity-80">
+            <img
+              src="https://cdn.simpleicons.org/claude/0f172a"
+              alt="Claude logo"
+              loading="lazy"
+              className="h-7 w-auto"
+            />
+            <img
+              src="https://cdn.simpleicons.org/openai/0f172a"
+              alt="OpenAI logo"
+              loading="lazy"
+              className="h-7 w-auto"
+            />
+            <img
+              src="https://cdn.simpleicons.org/cursor/0f172a"
+              alt="Cursor logo"
+              loading="lazy"
+              className="h-7 w-auto"
+            />
+          </div>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">

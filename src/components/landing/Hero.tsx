@@ -1,10 +1,9 @@
-import { ArrowRight, Play, Star, ShieldCheck, CreditCard, Sparkles } from "lucide-react";
+import { ArrowRight, Star, ShieldCheck, CreditCard, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "./Eyebrow";
 import { CopyField } from "./CopyField";
 
 const SCALELIST_MCP_URL = "[SCALELIST_MCP_URL]";
-const DEMO_VIDEO_URL = "#";
 
 export function Hero() {
   return (
@@ -76,15 +75,6 @@ export function Hero() {
           </ul>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm">
-            <a
-              href={DEMO_VIDEO_URL}
-              className="inline-flex items-center gap-2 font-medium text-foreground hover:text-primary"
-            >
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Play className="h-3.5 w-3.5" fill="currentColor" />
-              </span>
-              Watch demo · 30s
-            </a>
             <span className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground">
               <Star className="h-3.5 w-3.5 fill-primary text-primary" /> 4.8 on Google
               <span className="text-muted-foreground">[CONFIRM_RATING]</span>

@@ -94,7 +94,6 @@ function Index() {
         <UseCases />
         <Testimonials />
         <HowItWorks />
-        <ClosingCTA />
         <Pricing />
         <FAQ />
         <ClosingCTA />
