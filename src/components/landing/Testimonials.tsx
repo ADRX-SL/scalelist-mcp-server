@@ -1,58 +1,45 @@
-import { Eyebrow } from "./Eyebrow";
-
-const QUOTES = [
-  {
-    q: "We replaced two tools and a manual cleanup workflow with one connector. Our SDRs ask for leads in chat and get verified contacts back.",
-    name: "[Name]",
-    role: "[Role] at [Company]",
-  },
-  {
-    q: "Coverage on European mobiles is the best we've tested. The waterfall really does what it says.",
-    name: "[Name]",
-    role: "[Role] at [Company]",
-  },
-  {
-    q: "Our AE prep used to take 20 minutes per account. Now it's a one-line prompt before the call.",
-    name: "[Name]",
-    role: "[Role] at [Company]",
-  },
-  {
-    q: "The fact we only pay when data is found makes the math obvious. We stopped budgeting around platform seats.",
-    name: "[Name]",
-    role: "[Role] at [Company]",
-  },
-];
-
 export function Testimonials() {
   return (
-    <section className="py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-3xl text-center sl-reveal">
-          <Eyebrow>Customer love</Eyebrow>
-          <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-            What our users say.
+    <section className="bg-[#FAF7F1] py-20 md:py-28">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-2 md:items-center md:gap-14">
+        <div className="sl-reveal order-2 md:order-1">
+          <h2 className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
+            Scalelist is a must-have!
           </h2>
+          <blockquote className="mt-6 text-lg leading-relaxed text-foreground/80 md:text-xl">
+            We've been using Scalelist for six months and are extremely satisfied. The tool is
+            powerful and intuitive, and the founders provide outstanding support. What stands out
+            is that user feedback is not just heard but actively implemented. Regular updates make
+            it even better. If you want to scale efficiently, Scalelist is a must-have!
+          </blockquote>
+          <figcaption className="mt-8 flex items-center gap-4">
+            <div>
+              <div className="text-base font-bold text-foreground">Manuel Drissner</div>
+              <div className="text-sm text-muted-foreground">
+                Head of Sales @ Consolidate Software
+              </div>
+            </div>
+            <img
+              src="https://scalelist.com/wp-content/uploads/2025/09/Manuel-Drissner-company.webp"
+              alt="Consolidate Software logo"
+              loading="lazy"
+              className="ml-2 h-10 w-auto object-contain"
+            />
+          </figcaption>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {QUOTES.map((t, i) => (
-            <figure
-              key={i}
-              className="sl-reveal flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-sm"
-            >
-              <blockquote className="text-lg leading-relaxed text-foreground">
-                "{t.q}"
-              </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
-                  {t.name.charAt(1) || "•"}
-                </span>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">{t.name}</div>
-                  <div className="text-xs text-muted-foreground">{t.role}</div>
-                </div>
-              </figcaption>
-            </figure>
-          ))}
+
+        <div className="sl-reveal order-1 md:order-2">
+          <div
+            className="mx-auto flex aspect-square w-full max-w-md items-end justify-center overflow-hidden rounded-[2rem]"
+            style={{ background: "#F5C842" }}
+          >
+            <img
+              src="https://scalelist.com/wp-content/uploads/2026/03/Manuel-Drissner.webp"
+              alt="Portrait of Manuel Drissner, Head of Sales at Consolidate Software"
+              loading="lazy"
+              className="h-full w-full object-cover object-bottom"
+            />
+          </div>
         </div>
       </div>
     </section>
