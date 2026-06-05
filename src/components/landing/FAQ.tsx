@@ -6,7 +6,9 @@ import {
 } from "@/components/ui/accordion";
 import { Eyebrow } from "./Eyebrow";
 
-const FAQS = [
+const SCALELIST_MCP_URL = "https://mcp.scalelist.com/sse";
+
+export const FAQS = [
   {
     q: "Which AI clients does the Scalelist MCP server work with?",
     a: "Any MCP-compatible client — Claude Desktop, ChatGPT (via MCP), Cursor, and other assistants that support the Model Context Protocol. Paste the connector URL once and you're live.",
@@ -34,6 +36,26 @@ const FAQS = [
   {
     q: "How do I get set up?",
     a: "Create a free account (50 credits, no card), copy your Scalelist MCP URL, paste it into your AI client's connector settings, and start asking. Most teams are live in under five minutes.",
+  },
+  {
+    q: "Is Scalelist a good MCP server for sales and marketing?",
+    a: "Yes — Scalelist is purpose-built as an MCP server for sales and marketing teams. The waterfall across multiple verified data providers keeps fill rates high, every result is checked before it reaches your AI assistant, and credits are only spent when verified data is found.",
+  },
+  {
+    q: "Can I use Scalelist as an AI sales assistant?",
+    a: "That's exactly the point. Connect Scalelist to your AI client and it becomes an AI sales assistant that can prospect, enrich, write outreach, prep meetings, and push to CRM — all from chat, on top of verified, weekly-refreshed B2B data.",
+  },
+  {
+    q: "How do I use Scalelist for sales in ChatGPT?",
+    a: `In ChatGPT's MCP connector settings, paste your Scalelist MCP URL (${SCALELIST_MCP_URL}) and authorize. ChatGPT can then find verified emails and mobiles, enrich contacts, and draft outreach inside the chat. You only pay for verified results, and the data is GDPR & CCPA aligned.`,
+  },
+  {
+    q: "How do I use Scalelist for sales in Claude?",
+    a: `Open Claude Desktop, add a new MCP server, and paste ${SCALELIST_MCP_URL}. Claude immediately becomes a sales-ready assistant — ask it to build a lead list, enrich a CSV, or prep your next meeting, and it queries Scalelist's waterfall behind the scenes.`,
+  },
+  {
+    q: "Can Scalelist power an AI SDR agent?",
+    a: "Yes. Scalelist is built for MCP for sales AI agents, so any AI SDR agent or autonomous workflow that speaks MCP can plug in. The agent sources prospects, only spends credits on verified hits, and pushes clean records to your CRM — all without the bad-data tax that breaks most SDR automations.",
   },
 ];
 
