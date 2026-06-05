@@ -39,7 +39,7 @@ export function DataQuality() {
           </p>
           <p>
             Every result is verified and the junk is filtered out before it ever reaches your
-            agent's output — so your assistant acts on data you can actually use.
+            agent's output — so your AI sales assistant acts on data you can actually use.
           </p>
         </div>
       </div>
