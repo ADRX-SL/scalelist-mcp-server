@@ -218,20 +218,7 @@ export function UseCases() {
   );
 }
 
-function SkillCard({ title, desc, example }: { title: string; desc: string; example: string }) {
-  const [open, setOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
-
-  const onCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(example);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch {
-      /* noop */
-    }
-  };
-
+function SkillCard({ title, desc, slug }: { title: string; desc: string; slug: string }) {
   return (
     <div className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex-1">
@@ -239,39 +226,15 @@ function SkillCard({ title, desc, example }: { title: string; desc: string; exam
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-3">
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 font-mono text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
+      <div className="mt-4">
+        <a
+          href={`/skills/${slug}.skill`}
+          download
+          className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50"
         >
-          {open ? "Hide example" : "Show example"}
-          <ChevronDown
-            className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-          />
-        </button>
-        <button
-          type="button"
-          onClick={onCopy}
-          aria-label="Copy example"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:underline"
-        >
-          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-          {copied ? "Copied" : "Copy"}
-        </button>
-      </div>
-
-      <div
-        className={`grid transition-all duration-300 ease-out ${
-          open ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
-      >
-        <div className="overflow-hidden">
-          <div className="max-h-48 overflow-y-auto whitespace-pre-wrap rounded-xl border border-border bg-muted/50 p-4 font-mono text-sm leading-relaxed text-foreground">
-            {example}
-          </div>
-        </div>
+          <Download className="h-4 w-4" />
+          Download Skill
+        </a>
       </div>
     </div>
   );
