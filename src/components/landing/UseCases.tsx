@@ -195,7 +195,7 @@ function UseCaseCard({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="relative whitespace-pre-wrap rounded-xl border border-border bg-muted/50 p-4 pr-12 font-mono text-sm leading-relaxed text-foreground">
+          <div className="relative max-h-48 overflow-y-auto whitespace-pre-wrap rounded-xl border border-border bg-muted/50 p-4 pr-12 font-mono text-sm leading-relaxed text-foreground">
             {prompt}
             <button
               type="button"
