@@ -1,21 +1,16 @@
-import { MailCheck, PhoneCall, Building2, Filter } from "lucide-react";
+import { MailCheck, PhoneCall, Filter } from "lucide-react";
 import { Eyebrow } from "./Eyebrow";
 
 const FEATURES = [
   {
     icon: MailCheck,
     title: "Verified work emails",
-    desc: "Triple-checked, low bounce rate.",
+    desc: "Triple-checked, <5% bounce rate.",
   },
   {
     icon: PhoneCall,
     title: "Confirmed mobile numbers",
     desc: "Validated against real line ownership.",
-  },
-  {
-    icon: Building2,
-    title: "Rich people & company profiles",
-    desc: "Title, seniority, job changes, headcount, industry.",
   },
   {
     icon: Filter,
@@ -34,8 +29,8 @@ export function DataQuality() {
         </h2>
         <div className="mx-auto mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-muted-foreground">
           <p>
-            Scalelist runs a waterfall across multiple data providers in sequence until it finds
-            verified data, so fill rates stay high where single-database tools have coverage gaps.
+            Scalelist finds verified professional emails and mobiles, so fill rates stay high
+            where single-database tools have coverage gaps.
           </p>
           <p>
             Every result is verified and the junk is filtered out before it ever reaches your
@@ -48,7 +43,7 @@ export function DataQuality() {
         <h3 className="text-center text-2xl font-extrabold tracking-tight text-foreground md:text-3xl">
           Feed your agent good data only.
         </h3>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => (
             <div
               key={f.title}
