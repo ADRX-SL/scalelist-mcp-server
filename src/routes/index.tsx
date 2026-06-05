@@ -95,7 +95,7 @@ function Index() {
         <InlineCTA />
         <ClientsSection />
         <UseCases />
-        <InlineCTA />
+        <InlineCTA className="bg-linear-to-b from-section-cool from-50% to-section-warm to-50%" />
         <Testimonials />
         <HowItWorks />
         <Pricing />
