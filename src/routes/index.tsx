@@ -92,6 +92,7 @@ function Index() {
         <DataQuality />
         <InlineCTA />
         <HowYouCanUseIt />
+        <InlineCTA />
         <ClientsSection />
         <UseCases />
         <InlineCTA />
@@ -99,7 +100,6 @@ function Index() {
         <HowItWorks />
         <Pricing />
         <FAQ />
-        <InlineCTA eyebrow="Still have questions?" />
         <ClosingCTA />
       </main>
       <Footer />
