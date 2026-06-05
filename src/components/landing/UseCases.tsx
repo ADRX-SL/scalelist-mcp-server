@@ -69,7 +69,8 @@ export function UseCases() {
             One conversation. Your entire prospecting stack.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Real prompts your team can paste today.
+            Real prompts your team can paste today. Use Scalelist as an AI prospecting tool — or
+            wire it into your AI SDR agent.
           </p>
         </div>
 
