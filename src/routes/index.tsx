@@ -6,7 +6,6 @@ import { DataQuality } from "@/components/landing/DataQuality";
 import { HowYouCanUseIt } from "@/components/landing/HowYouCanUseIt";
 import { ClientsSection } from "@/components/landing/ClientsSection";
 import { UseCases } from "@/components/landing/UseCases";
-import { SkillsSection } from "@/components/landing/SkillsSection";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Pricing } from "@/components/landing/Pricing";
@@ -93,7 +92,6 @@ function Index() {
         <HowYouCanUseIt />
         <ClientsSection />
         <UseCases />
-        <SkillsSection />
         <Testimonials />
         <HowItWorks />
         <Pricing />
