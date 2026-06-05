@@ -7,18 +7,21 @@ const CARDS = [
     title: "Scalelist for Claude",
     desc: "Add the MCP server and use Claude for sales: prospect, enrich, and prep calls in chat.",
     alt: "Scalelist MCP server connector running inside Claude as an AI sales assistant",
+    href: "https://intercom.help/scalelist/en/articles/15337359-connect-claude-to-scalelist",
   },
   {
     icon: MessageSquare,
     title: "Scalelist in ChatGPT",
     desc: "Connect once and use ChatGPT for sales with verified B2B data.",
     alt: "Scalelist MCP connector turning ChatGPT into an AI sales assistant",
+    href: "https://intercom.help/scalelist/en/articles/15338166-connect-chatgpt-to-scalelist",
   },
   {
     icon: Plug,
     title: "Any MCP client",
     desc: "Cursor and any MCP-compatible AI agent. Built for MCP for sales AI agents.",
     alt: "Scalelist MCP connector working with Cursor and other MCP for sales AI agents",
+    href: "https://intercom.help/scalelist/en/articles/15339550-scalelist-mcp-server",
   },
 ];
 
@@ -48,9 +51,12 @@ export function ClientsSection() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {CARDS.map((c) => (
-            <div
+            <a
               key={c.title}
-              className="sl-reveal rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+              href={c.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sl-reveal block rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               <span
                 className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary"
@@ -61,7 +67,7 @@ export function ClientsSection() {
               </span>
               <h3 className="mt-5 text-lg font-bold text-foreground">{c.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
-            </div>
+            </a>
           ))}
         </div>
       </div>
