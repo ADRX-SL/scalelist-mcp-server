@@ -1,15 +1,6 @@
-# Center CTA bands between colored sections
+Fix the CTA spacing mistake by changing only `src/components/landing/InlineCTA.tsx`.
 
-Increase `InlineCTA` vertical padding so the white CTA band roughly matches the height of the surrounding colored sections' whitespace.
-
-## Change
-
-In `src/components/landing/InlineCTA.tsx`:
-- `py-4 md:py-6` → `py-20 md:py-28`
-
-Effect: button vertically centered, white band ≈ adjacent colored bands.
-
-## Out of scope
-
-- No background color on InlineCTA
-- No padding changes in DataQuality, HowYouCanUseIt, UseCases, Testimonials
+Plan:
+1. Replace the oversized CTA wrapper padding `py-20 md:py-28` with smaller vertical padding.
+2. Use a compact value around `py-8 md:py-10` so the CTA sits much closer between the surrounding sections, matching the screenshot request to decrease padding.
+3. Leave CTA placement, buttons, text, and other landing sections unchanged.
