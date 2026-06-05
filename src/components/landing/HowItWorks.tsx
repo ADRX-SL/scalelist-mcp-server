@@ -28,7 +28,7 @@ export function HowItWorks() {
             n={2}
             icon={MessageSquare}
             title="Ask"
-            desc={`In plain language: "Find me 20 VP Sales in France." "Enrich this CSV." "Prep my next call."`}
+            desc={`In plain language: "Find me all the VP Sales in the United States in the tech industry" "Enrich this CSV." "Prep my next call."`}
           />
           <Step
             n={3}
