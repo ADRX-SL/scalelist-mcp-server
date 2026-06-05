@@ -18,7 +18,8 @@ export function Pricing() {
             Pricing that works like your AI stack.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Your LLM charges per token. Your enrichment should work the same way.
+            Your LLM charges per token. Your enrichment should work the same way — that's why
+            teams pick Scalelist as the best MCP server for sales and marketing.
           </p>
         </div>
 
