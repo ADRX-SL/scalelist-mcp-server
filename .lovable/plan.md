@@ -1,14 +1,32 @@
-I can see it clearly: in the screenshot, cards with longer titles/descriptions push their “Show prompt” button lower, so the buttons are not on the same horizontal line.
+# Add 3 CTA blocks to the landing page
 
-Plan:
-1. Update only the use-case prompt cards in `src/components/landing/UseCases.tsx`.
-2. Give each collapsed prompt card a fixed/equal base height so all cards in the grid start with the same height.
-3. Change the card layout so the action row is pinned to the bottom of that equal-height card, making every “Show prompt” button align across each row.
-4. Keep the expanded prompt behavior isolated so opening one card grows only that card downward and does not stretch neighboring cards.
+Fill the longest CTA-dead stretches with consistent "Get started for free" + "Talk to sales" button pairs, matching the existing Hero/HowItWorks style (primary blue pill + white outline pill).
 
-Technical detail:
-- Add a responsive `min-h` to `UseCaseCard`.
-- Keep the card as `flex flex-col`.
-- Keep the content wrapper as `flex-1`.
-- Keep the grid using `items-start`.
-- Do not change other sections or the Skills cards unless needed for this exact alignment issue.
+## CTAs to add
+
+**1. After `DataQuality` section**
+- Primary: `Get started for free` → `https://app.scalelist.com/auth/signup?redirectUrl=%2Fapp%2Fdashboard`
+- Secondary: `Talk to sales` → `https://form.typeform.com/to/lvQHcXGx`
+- Placement: centered, just before `HowYouCanUseIt`
+
+**2. After `UseCases` section**
+- Same two buttons
+- Placement: centered, just before `Testimonials`
+
+**3. After `FAQ` section**
+- Same two buttons, with small lead-in line: "Still have questions?"
+- Placement: centered, just before `ClosingCTA`
+
+## Implementation
+
+- Create one shared component `src/components/landing/InlineCTA.tsx` accepting an optional `eyebrow` prop, rendering the two buttons exactly like the pair at the bottom of `HowItWorks.tsx` (same classes, same links, same shadow).
+- Mount it from `src/routes/index.tsx` between the three section pairs above — no edits inside the section components themselves.
+- Reuse existing tokens (`primary`, `border`, `muted`); no new colors.
+- Add `sl-reveal` class for the existing scroll-reveal animation.
+
+## Out of scope
+
+- Per-card CTAs in `ClientsSection`
+- Navbar CTA changes
+- Testimonials CTA
+- Copy or layout changes to existing sections

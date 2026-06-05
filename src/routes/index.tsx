@@ -12,6 +12,7 @@ import { Pricing } from "@/components/landing/Pricing";
 import { FAQ, FAQS } from "@/components/landing/FAQ";
 import { ClosingCTA } from "@/components/landing/ClosingCTA";
 import { Footer } from "@/components/landing/Footer";
+import { InlineCTA } from "@/components/landing/InlineCTA";
 import { useReveal } from "@/components/landing/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -89,13 +90,16 @@ function Index() {
         <Hero />
         <LogoBar />
         <DataQuality />
+        <InlineCTA />
         <HowYouCanUseIt />
         <ClientsSection />
         <UseCases />
+        <InlineCTA />
         <Testimonials />
         <HowItWorks />
         <Pricing />
         <FAQ />
+        <InlineCTA eyebrow="Still have questions?" />
         <ClosingCTA />
       </main>
       <Footer />
