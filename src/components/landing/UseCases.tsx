@@ -220,17 +220,28 @@ function UseCaseCard({
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
       </div>
 
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-primary hover:underline"
-      >
-        {open ? "Hide prompt" : "Show prompt"}
-        <ChevronDown
-          className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-        />
-      </button>
+      <div className="mt-4 flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 font-mono text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
+        >
+          {open ? "Hide prompt" : "Show prompt"}
+          <ChevronDown
+            className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+        <button
+          type="button"
+          onClick={onCopy}
+          aria-label="Copy prompt"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:underline"
+        >
+          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
 
       <div
         className={`grid transition-all duration-300 ease-out ${
@@ -238,21 +249,8 @@ function UseCaseCard({
         }`}
       >
         <div className="overflow-hidden">
-          <div className="relative max-h-48 overflow-y-auto whitespace-pre-wrap rounded-xl border border-border bg-muted/50 p-4 pr-12 font-mono text-sm leading-relaxed text-foreground">
+          <div className="max-h-48 overflow-y-auto whitespace-pre-wrap rounded-xl border border-border bg-muted/50 p-4 font-mono text-sm leading-relaxed text-foreground">
             {prompt}
-            <button
-              type="button"
-              onClick={onCopy}
-              aria-label="Copy prompt"
-              className="absolute right-2 top-2 inline-flex h-8 w-8 items-center justify-center rounded-md border border-border bg-background text-muted-foreground transition-colors hover:text-primary"
-            >
-              {copied ? <Check className="h-4 w-4 text-primary" /> : <Copy className="h-4 w-4" />}
-            </button>
-            {copied && (
-              <span className="absolute -top-2 right-12 rounded-full bg-foreground px-2 py-0.5 text-xs font-medium text-background">
-                Copied!
-              </span>
-            )}
           </div>
         </div>
       </div>
