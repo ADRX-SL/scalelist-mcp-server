@@ -45,7 +45,7 @@ const ROWS: Row[] = [
       "Every contact flagged valid, risky, or not found; misses cost nothing",
       "Download as CSV or Excel, or push to Google Drive or your CRM",
     ],
-    videoLeft: true,
+    videoLeft: false,
   },
 ];
 
