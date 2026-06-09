@@ -65,7 +65,7 @@ export function HowYouCanUseIt() {
 
         <div className="mt-14 flex flex-col gap-10 md:gap-16">
           {ROWS.map((row, i) => {
-            const isOdd = i % 2 === 1;
+            const videoLeft = row.videoLeft ?? (i % 2 === 1);
             const textBlock = (
               <div>
                 <h3 className="text-2xl font-extrabold tracking-tight text-foreground md:text-3xl">
@@ -103,7 +103,7 @@ export function HowYouCanUseIt() {
                 key={row.videoSrc}
                 className="sl-reveal grid gap-10 rounded-3xl border border-border bg-card p-6 shadow-sm md:grid-cols-2 md:items-center md:gap-12 md:p-10"
               >
-                {isOdd ? (
+                {videoLeft ? (
                   <>
                     {videoBlock}
                     {textBlock}
