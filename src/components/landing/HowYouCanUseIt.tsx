@@ -6,6 +6,7 @@ type Row = {
   title: string;
   paragraph: string;
   bullets: string[];
+  videoLeft?: boolean;
 };
 
 const ROWS: Row[] = [
@@ -33,6 +34,19 @@ const ROWS: Row[] = [
       "Export to CSV or Google Drive in one step",
     ],
   },
+  {
+    videoSrc: "https://www.youtube-nocookie.com/embed/2mO-Pqvsdx8",
+    videoTitle: "Enrich a CSV with emails and phones in Claude",
+    title: "Enrich a whole CSV with emails and phones in Claude",
+    paragraph:
+      "Drop a CSV of names and companies into Claude and ask Scalelist to find verified work emails and direct phone numbers for the entire list in one run. No manual lookups, no enterprise tool.",
+    bullets: [
+      "Upload a CSV; get verified emails and mobiles back in one pass",
+      "Every contact flagged valid, risky, or not found; misses cost nothing",
+      "Download as CSV or Excel, or push to Google Drive or your CRM",
+    ],
+    videoLeft: true,
+  },
 ];
 
 export function HowYouCanUseIt() {
@@ -51,7 +65,7 @@ export function HowYouCanUseIt() {
 
         <div className="mt-14 flex flex-col gap-10 md:gap-16">
           {ROWS.map((row, i) => {
-            const isOdd = i % 2 === 1;
+            const videoLeft = row.videoLeft ?? (i % 2 === 1);
             const textBlock = (
               <div>
                 <h3 className="text-2xl font-extrabold tracking-tight text-foreground md:text-3xl">
@@ -89,7 +103,7 @@ export function HowYouCanUseIt() {
                 key={row.videoSrc}
                 className="sl-reveal grid gap-10 rounded-3xl border border-border bg-card p-6 shadow-sm md:grid-cols-2 md:items-center md:gap-12 md:p-10"
               >
-                {isOdd ? (
+                {videoLeft ? (
                   <>
                     {videoBlock}
                     {textBlock}
