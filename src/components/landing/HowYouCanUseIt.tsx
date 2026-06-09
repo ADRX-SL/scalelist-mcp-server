@@ -6,6 +6,7 @@ type Row = {
   title: string;
   paragraph: string;
   bullets: string[];
+  videoLeft?: boolean;
 };
 
 const ROWS: Row[] = [
@@ -32,6 +33,19 @@ const ROWS: Row[] = [
       "Get verified emails flagged valid or risky; misses cost nothing",
       "Export to CSV or Google Drive in one step",
     ],
+  },
+  {
+    videoSrc: "https://www.youtube-nocookie.com/embed/2mO-Pqvsdx8",
+    videoTitle: "Enrich a CSV with emails and phones in Claude",
+    title: "Enrich a whole CSV with emails and phones in Claude",
+    paragraph:
+      "Drop a CSV of names and companies into Claude and ask Scalelist to find verified work emails and direct phone numbers for the entire list in one run. No manual lookups, no enterprise tool.",
+    bullets: [
+      "Upload a CSV; get verified emails and mobiles back in one pass",
+      "Every contact flagged valid, risky, or not found; misses cost nothing",
+      "Download as CSV or Excel, or push to Google Drive or your CRM",
+    ],
+    videoLeft: true,
   },
 ];
 
